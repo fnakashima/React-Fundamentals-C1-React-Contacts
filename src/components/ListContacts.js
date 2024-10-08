@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ListContacts =  ({contacts, onDeleteContact, onNavigate}) => {
+const ListContacts =  ({contacts, onDeleteContact}) => {
     //console.log("ListContacts: contacts: ", contacts);
     //console.log("ListContacts: onDeleteContact: ", onDeleteContact);
 
@@ -25,7 +26,9 @@ const ListContacts =  ({contacts, onDeleteContact, onNavigate}) => {
                         value={query}
                         onChange={(event) => updateQuery(event.target.value)}>
                 </input>
-                <a href="#create" onClick={onNavigate} className="add-contact">Add contact</a>
+                <Link to="/create" className="add-contact">
+                    Add Contact
+                </Link>
             </div>
 
             {
@@ -63,8 +66,7 @@ const ListContacts =  ({contacts, onDeleteContact, onNavigate}) => {
 
 ListContacts.propTypes = {
     contacts: PropTypes.array.isRequired,
-    onDeleteContact: PropTypes.func.isRequired,
-    onNavigate: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired
 }
 
 export default ListContacts;
